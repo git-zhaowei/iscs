@@ -1,0 +1,1806 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta charset="utf-8" /> 
+  <meta http-equiv="Pragma" content="no-cache" /> 
+  <meta http-equiv="Expires" content="0" /> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+  <title>智慧垃圾管控平台</title> 
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Cache-Control" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta name="renderer" content="webkit" />
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+  <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+  <script type="text/javascript" src="js/jquery.jsonp.js"></script>
+  <script type="text/javascript" src="js/jquery.jqplot.min.js"></script>
+  <script type="text/javascript" src="js/syntaxhighlighter/scripts/shCore.min.js"></script>
+  <script type="text/javascript" src="js/syntaxhighlighter/scripts/shBrushJScript.min.js"></script>
+  <script type="text/javascript" src="js/syntaxhighlighter/scripts/shBrushXml.min.js"></script>
+  <script type="text/javascript" src="js/plugins/jqplot.barRenderer.min.js"></script>
+  <script type="text/javascript" src="js/plugins/jqplot.pieRenderer.min.js"></script>
+  <script type="text/javascript" src="js/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+  <script type="text/javascript" src="js/plugins/jqplot.pointLabels.min.js"></script>
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=IodPyxQlYROsxomC7Znnbh6uwdcegdFg"></script>
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=IodPyxQlYROsxomC7Znnbh6uwdcegdFg"></script>
+  <script type="text/javascript" src="js/echarsall.js"></script>
+  <link href="css/eui.css" rel="stylesheet" type="text/css" />
+  <link href="css/coolrptshow.css" rel="stylesheet" type="text/css" />
+  <link href="css/floatdlg.css" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+  
+@charset "utf-8";
+/* CSS Document */
+#HHH77 span,
+#HHH76 span{
+    cursor:pointer;
+}
+#HHH77 span::before,
+#HHH76 span::before{
+	content: " ";
+    width: 23px;
+    height: 22px;
+    background: url(imgs/achor_icon.png) no-repeat;
+    display: inline-block;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+#HHH69 .textcontent::before{
+    content: " ";
+    width: 31px;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+    right: 20px;
+    top: 27%;
+}
+
+#HHH69{
+    display:none;
+}
+#HHH69 span{
+    cursor:pointer;
+}
+#HHH79 .textcontent:hover{
+    transform:scale(1.05);
+    cursor:pointer;
+}
+#HHH81 .textcontent:hover{
+    transform:scale(1.05);
+    cursor:pointer;
+}
+
+.textcontent{
+	font-size:12px;
+    overflow: hidden; 
+    word-wrap: break-word; 
+    word-break: break-all; 
+    display: inline-block;
+    width: 100%;
+    line-height: 1.1; 
+}
+@charset "utf-8";
+
+
+.coolscreen-container{
+		position: absolute;
+		width: 500px;
+		height: 500px;
+		border: 2px solid rgba(92,255,255,0.1);
+		background: rgba(10,106,255,0.1) url(imgs/wange.png) repeat 50% 50% !important;
+		background-blend-mode: screen;
+		overflow: visible;
+}
+
+.coolscreen-container:before,.coolscreen-container:after{
+		content: "";
+		position: absolute;
+		top: -2px;
+		width: 5px;
+		height: 5px;
+		border-color: #0a6aff;
+		border-style: solid;
+		border-top-width: 2px;
+		border-bottom-width:0;
+}
+
+.coolscreen-container:before{
+		left: -2px;
+		border-left-width: 2px;
+		border-right-width: 0;
+}
+
+.coolscreen-container:after{
+		right: -2px;
+		border-left-width: 0;
+		border-right-width: 2px;
+}
+
+.coolscreen-container .coolscreen-content{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+}
+
+.coolscreen-container .coolscreen-content:before,.coolscreen-container .coolscreen-content:after{
+		content: "";
+		position: absolute;
+		bottom: -2px;
+		width: 5px;
+		height: 5px;
+		border-color: #0a6aff;
+		border-style: solid;
+		border-top-width: 0;
+		border-bottom-width:2px;
+}
+
+.coolscreen-container .coolscreen-content:before{
+		left: -2px;
+		border-left-width: 2px;
+		border-right-width: 0;
+}
+
+.coolscreen-container .coolscreen-content:after{
+		right: -2px;
+		border-left-width: 0;
+		border-right-width: 2px;
+}
+
+.coolscreen-container .coolscreen-container-title{
+		position: absolute;
+		height: 26px;
+		font-size: 16px;
+		font-family: "Microsoft YaHei UI";
+		color: #00c2ff;
+		line-height: 26px;
+		padding: 0 0 0 20px;
+		left: 10px;
+		right: 10px;
+		top: 10px;
+}
+
+.coolscreen-container .coolscreen-container-title:before{
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 50%;
+		margin-top: -7px;
+		width: 14px;
+		height: 14px;
+}
+
+.coolscreen-container .coolscreen-container-body{
+		position: absolute;
+		top: 40px;
+		left: 0px;
+		right: 0px;
+		bottom: 0px;
+}
+
+/* container-1 佛山广电 */
+.coolscreen-container-1{
+		position: absolute;
+		width: 500px;
+		height: 500px;
+		border: 1px solid rgba(0,180,255,.5);
+		background: rgba(1, 64, 124, 0.1) url(imgs/cool-container.png) no-repeat 50% -28px !important;
+		overflow: visible;
+}
+
+.coolscreen-container-1:before,.coolscreen-container-1:after{
+		content: "";
+		position: absolute;
+		top: -1px;
+		width: 10px;
+		height: 10px;
+		border-color: #006fe1;
+		border-style: solid;
+		border-top-width: 2px;
+		border-bottom-width:0;
+}
+
+.coolscreen-container-1:before{
+		left: -1px;
+		border-left-width: 2px;
+		border-right-width: 0;
+}
+
+.coolscreen-container-1:after{
+		right: -1px;
+		border-left-width: 0;
+		border-right-width: 2px;
+}
+
+.coolscreen-container-1 .coolscreen-content{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+}
+
+.coolscreen-container-1 .coolscreen-content:before,.coolscreen-container-1 .coolscreen-content:after{
+		content: "";
+		position: absolute;
+		bottom: -1px;
+		width: 10px;
+		height: 10px;
+		border-color: #006fe1;
+		border-style: solid;
+		border-top-width: 0;
+		border-bottom-width:2px;
+}
+
+.coolscreen-container-1 .coolscreen-content:before{
+		left: -1px;
+		border-left-width: 2px;
+		border-right-width: 0;
+}
+
+.coolscreen-container-1 .coolscreen-content:after{
+		right: -1px;
+		border-left-width: 0;
+		border-right-width: 2px;
+}
+
+.coolscreen-container-1 .coolscreen-container-title{
+		position: absolute;
+		height: 26px;
+		font-size: 20px;
+		font-family: "Microsoft YaHei UI";
+		font-weight: bold;
+		text-align: center;
+		color: #fff;
+		line-height: 26px;
+		padding: 0 10px;
+		left: 10px;
+		right: 10px;
+		top: 10px;
+}
+
+.coolscreen-container-1 .coolscreen-container-title:before{
+
+}
+
+.coolscreen-container-1 .coolscreen-container-body{
+		position: absolute;
+		top: 46px;
+		left: 5px;
+		right: 5px;
+		bottom: 5px;
+}
+
+
+
+
+
+
+
+.coolscreen-container-2{
+		position: absolute;
+		width: 500px;
+		height: 500px;
+		border: 1px solid rgba(0,180,255,.5);
+		background: rgba(1, 64, 124, 0.1) url(imgs/cool-container.png) no-repeat 50% -28px !important;
+		overflow: visible;
+}
+
+.coolscreen-container-2:before,.coolscreen-container-2:after{
+		content: "";
+		position: absolute;
+		top: -1px;
+		width: 10px;
+		height: 10px;
+		border-color: #006fe1;
+		border-style: solid;
+		border-top-width: 2px;
+		border-bottom-width:0;
+}
+
+.coolscreen-container-2:before{
+		left: -1px;
+		border-left-width: 2px;
+		border-right-width: 0;
+}
+
+.coolscreen-container-2:after{
+		right: -1px;
+		border-left-width: 0;
+		border-right-width: 2px;
+}
+
+.coolscreen-container-2 .coolscreen-content{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+}
+
+.coolscreen-container-2 .coolscreen-content:before,.coolscreen-container-2 .coolscreen-content:after{
+		content: "";
+		position: absolute;
+		bottom: -1px;
+		width: 10px;
+		height: 10px;
+		border-color: #006fe1;
+		border-style: solid;
+		border-top-width: 0;
+		border-bottom-width:2px;
+}
+
+.coolscreen-container-2 .coolscreen-content:before{
+		left: -1px;
+		border-left-width: 2px;
+		border-right-width: 0;
+}
+
+.coolscreen-container-2 .coolscreen-content:after{
+		right: -1px;
+		border-left-width: 0;
+		border-right-width: 2px;
+}
+
+.coolscreen-container-2 .coolscreen-container-title{
+		position: absolute;
+		height: 26px;
+		font-size: 20px;
+		font-family: "Microsoft YaHei UI";
+		font-weight: bold;
+		text-align: center;
+		color: #fff;
+		line-height: 26px;
+		padding: 0 10px;
+		left: 10px;
+		right: 10px;
+		top: 10px;
+}
+
+.coolscreen-container-2 .coolscreen-container-title:before{
+
+}
+
+.coolscreen-container-2 .coolscreen-container-body{
+		position: absolute;
+		top: 46px;
+		left: 5px;
+		right: 5px;
+		bottom: 5px;
+}
+
+
+
+/*智慧司法*/
+     .coolscreen-container-3 {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border: 2px solid rgba(92, 255, 255, 0.1);
+            background: rgba(10, 106, 255, 0.1) url(imgs/wange.png) repeat 50% 50% !important;
+            background-blend-mode: screen;
+            overflow: visible;
+        }
+
+        .coolscreen-container-3:before,
+        .coolscreen-container-3:after {
+            content: "";
+            position: absolute;
+            top: -2px;
+            width: 10px;
+            height: 10px;
+            border-color: #016193;
+            border-style: solid;
+            border-top-width: 2px;
+            border-bottom-width: 0;
+        }
+
+        .coolscreen-container-3:before {
+            left: -2px;
+            border-left-width: 2px;
+            border-right-width: 0;
+        }
+
+        .coolscreen-container-3:after {
+            right: -2px;
+            border-left-width: 0;
+            border-right-width: 2px;
+        }
+
+        .coolscreen-container-3 .coolscreen-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .coolscreen-container-3 .coolscreen-content:before,
+        .coolscreen-container-3 .coolscreen-content:after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            width: 10px;
+            height: 10px;
+            border-color: #016193;
+            border-style: solid;
+            border-top-width: 0;
+            border-bottom-width: 2px;
+        }
+
+        .coolscreen-container-3 .coolscreen-content:before {
+            left: -2px;
+            border-left-width: 2px;
+            border-right-width: 0;
+        }
+
+        .coolscreen-container-3 .coolscreen-content:after {
+            right: -2px;
+            border-left-width: 0;
+            border-right-width: 2px;
+        }
+
+        .coolscreen-container-3 .coolscreen-container-title {
+            position: absolute;
+            height: 26px;
+            font-size: 20px;
+            font-family: "Microsoft YaHei UI";
+            color: #00c2ff;
+            line-height: 26px;
+            padding: 0 0 0 20px;
+            left: 10px;
+            right: 10px;
+            top: 10px;
+        }
+
+        .coolscreen-container-3 .coolscreen-container-title:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 60%;
+            margin-top: -7px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: aqua;
+        }
+
+        .coolscreen-container-3 .coolscreen-container-body {
+            position: absolute;
+            top: 40px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+        }
+
+
+        /*纪委*/
+     .coolscreen-container-4 {
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        background-color: #1c4dc9;
+        box-shadow: 0px 0px 54px 0px rgba(8, 2, 36, 0.1);
+        border: solid 1px #1c4dc9;
+        overflow: visible;
+    }
+
+    .coolscreen-container-4:before,
+    .coolscreen-container-4:after {
+        content: "";
+        position: absolute;
+        top: -2px;
+        width: 0px;
+        height: 0px;
+        border-top-width: 0;
+        border-bottom-width: 0;
+    }
+
+    .coolscreen-container-4:before {
+        background: url(imgs/title-top.png) no-repeat center -44px;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100px;
+        border-width: 0px;
+    }
+
+    .coolscreen-container-4:after {
+        right: -2px;
+        border-left-width: 0;
+        border-right-width: 0px;
+    }
+
+    .coolscreen-container-4 .coolscreen-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .coolscreen-container-4 .coolscreen-content:before,
+    .coolscreen-container-4 .coolscreen-content:after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        width: 0px;
+        height: 0px;
+        border-color: #016193;
+        border-style: solid;
+        border-top-width: 0;
+        border-bottom-width: 2px;
+    }
+
+    .coolscreen-container-4 .coolscreen-content:before {
+        left: -2px;
+        border-left-width: 0px;
+        border-right-width: 0;
+    }
+
+    .coolscreen-container-4 .coolscreen-content:after {
+        right: -2px;
+        border-left-width: 0;
+        border-right-width: 0px;
+    }
+
+    .coolscreen-container-4 .coolscreen-container-title {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: auto;
+        padding: 0;
+        line-height: 48px;
+        font-size: 20px;
+        font-family: "Microsoft YaHei UI";
+        color: #fff;
+        text-align: center;
+    }
+
+    .coolscreen-container-4 .coolscreen-container-title::before {
+        content: "";
+        position: relative;
+        display: inline-block;
+        left: auto;
+        top: auto;
+        margin-top: 0;
+        width: 86px;
+        height: 8px;
+        margin-right: 20px;
+        background: url(imgs/title-left.png) no-repeat 0% 0% !important;
+    }
+    .coolscreen-container-4 .coolscreen-container-title::after{
+        content: "";
+        position: relative;
+        display: inline-block;
+        left: auto;
+        top: auto;
+        margin-top: 0;
+        width: 86px;
+        height: 8px;
+        margin-left: 20px;
+        background: url(imgs/title-right.png) no-repeat 0% 0% !important;
+    }
+
+    .coolscreen-container-4 .coolscreen-container-body {
+        position: absolute;
+        top: 40px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+    }
+
+/* 华侨城 */
+    .coolscreen-container-5 {
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        background: transparent !important;
+        border: solid 1px transparent;
+        overflow: visible;
+    }
+
+    .coolscreen-container-5:before,
+    .coolscreen-container-5:after {
+        content: "";
+        position: absolute;
+        top: -2px;
+        width: 0px;
+        height: 0px;
+        border-top-width: 0;
+        border-bottom-width: 0;
+    }
+
+    .coolscreen-container-5:after {
+        right: -2px;
+        border-left-width: 0;
+        border-right-width: 0px;
+    }
+
+    .coolscreen-container-5 .coolscreen-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url(imgs/line光效.png) no-repeat;
+        background-position-x: 50%;
+    }
+
+    .coolscreen-container-5 .coolscreen-content:before,
+    .coolscreen-container-5 .coolscreen-content:after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        width: 0px;
+        height: 0px;
+        border-color:#016193;
+        border-style: solid;
+        border-top-width: 0;
+        border-bottom-width: 2px;
+    }
+
+    .coolscreen-container-5 .coolscreen-content:before {
+        left: -2px;
+        border-left-width: 0px;
+        border-right-width: 0;
+    }
+
+    .coolscreen-container-5 .coolscreen-content:after {
+        right: -2px;
+        border-left-width: 0;
+        border-right-width: 0px;
+    }
+
+    .coolscreen-container-5 .coolscreen-container-title {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 100px;
+        padding: 0;
+        line-height: 90px;
+        font-size: 20px;
+        font-family: "Microsoft YaHei UI";
+        color: #fff;
+        text-align: center;
+    }
+
+    .coolscreen-container-5 .coolscreen-container-title::before {
+        background: transparent !important;
+    }
+
+    .coolscreen-container-5 .coolscreen-container-body {
+        position: absolute;
+        top: 80px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+    }
+.textcontent{
+	font-size:12px;
+    overflow: hidden; 
+    word-wrap: break-word; 
+    word-break: break-all; 
+    display: inline-block;
+    width: 100%;
+    line-height: 1.1; 
+}
+@charset "utf-8";
+/* CSS Document */
+@font-face {
+  font-family: 'Digital';
+  src: url('fonts/Digital-7Mono.woff') format('woff'),
+  url('fonts/Digital-7Mono.ttf') format('truetype');
+}
+.wrap *{
+    box-sizing:border-box;
+    
+}
+.wrap{
+  float: left;
+  padding: 0px;
+  width: 50%;
+  height: 100%;
+   
+}
+.imgarrow{
+    width: 8px;
+    height: 18px;
+}
+.sectionDiv{
+  position: relative;
+  padding-top: 72px;
+  width: 100%;
+  height: 100%;
+  -webkit-border-radius: 2px;
+     -moz-border-radius: 2px;
+          border-radius: 2px;
+}
+.headerDiv{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 72px;
+  background-color: rgba(0, 73, 238, 0.14);
+    border-radius: 4px;
+}
+.titleUl{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+.titleUl li{
+    height:72px;
+    line-height:68px;
+}
+
+.title1Li{
+      font: 16px/32px "Microsoft Yahei";
+    color: #00baff;
+  position: relative;
+  float: left;
+  text-align: center;
+    padding-left:5px;
+  white-space: nowrap;
+}
+.title2Li{
+      font: 16px/32px "Microsoft Yahei";
+    color: #00baff;
+  position: relative;
+  float: left;
+  text-align: center;
+  white-space: nowrap;
+}
+.moreA{
+  display:none;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font: 20px/38px "Microsoft YaHei";
+  color: #00e2f6;
+  z-index: 10;
+}
+.moreA:after{
+  content: '>>';
+}
+.bodyDiv{
+	position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 16px;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    white-space: nowrap;
+}
+.controlDiv{
+	white-space:normal;
+	width:100%;
+    height: 100%;
+	position:absolute; 
+	left:0;
+	cursor:move;
+}
+.ul1{
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.liArray1{
+  background-color: transparent;
+}
+
+.liArray2{
+      background-color: transparent;
+}
+
+
+
+.ul2{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+    height: 60px;
+    line-height: 60px;
+}
+.ul2 li:nth-child(1){
+    text-align:center;
+}
+.ul2 li:nth-child(2) img{
+    height:100%;
+    width:0;
+    vertical-align:middle;
+    display:inline-block;
+}
+
+.ul2 li:nth-child(2) span{
+     vertical-align:middle;
+     display:inline-block;
+     
+}
+.liDiv{
+  position: relative;
+  float: left;
+  font: 16px/30px "Microsoft Yahei";
+    text-align: center;
+    color: #00d2ff;
+    font-family:"";
+  white-space: normal;
+}
+.txtDiv{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.moveDiv{
+	white-space:normal;
+	width:100%;
+}
+.str_move{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:100%;
+    display:inline-block;
+}
+ul.ul2:hover {
+    background: rgba(75,146,248,0.1);
+}
+ul.ul2:hover .liDiv {
+    color:rgba(6,240,249,0.7)
+}
+li.liDiv.li_men:before{
+    content:'';
+    display:inline-block;
+    position:absolute;
+    width:18px;
+    height:18px;
+        margin-left: -20px;
+        margin-top: 8px;
+}
+li.liDiv.li_women:before{
+    content:'';
+    display:inline-block;
+    position:absolute;
+    width:18px;
+    height:18px;
+        margin-left: -20px;
+        margin-top: 8px;
+}
+@charset "utf-8";
+/* CSS Document */
+.lineschina{
+    width:100%;
+	height:100%;
+}
+
+@charset "utf-8";
+/* CSS Document   transform: scale(0.4) translate(40px, -200px); */
+.cloud_basedom{
+     position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-origin: 0 0;
+}
+.cytzj{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.cloudesvg{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:url(imgs/cloud.png) no-repeat center;
+    pointer-events: none;
+
+    
+}
+
+.cytzj div{
+    position:absolute;
+    pointer-events:none;
+}
+
+.cytzj>div>div{
+    top:4% !important;
+    left:4% !important;
+    overflow:visible;
+    
+}
+.cytzj>div>div>a{
+        white-space: nowrap;
+       pointer-events: auto;
+       text-align:center;
+}
+
+
+.cytzj div:nth-child(1) {
+      left: 60px;
+    width: 250px;
+    height: 210px;
+    top: 80px;
+}
+.cytzj div:nth-child(2) {
+    left: 172px;
+    width: 300px;
+    height: 180px;
+    top: 52px;
+}
+
+.cytzj div:nth-child(3) {
+    left: 330px;
+    width: 454px;
+    height: 292px;
+    top: -68px;
+}
+
+.cytzj div:nth-child(4) {
+    left: 548px;
+    width: 332px;
+    height: 250px;
+    top: 166px;
+}
+
+.cytzj div:nth-child(5) {
+    left: 20%;
+    right: 20%;
+    top: 30%;
+    bottom: 10px;
+    border-radius: 50% 50% 0 0;
+    overflow: visible;
+}
+
+.cytzj div >div{
+        overflow:visible !important;
+}
+
+.processdom{
+    width:80%;
+    position:absolute;
+    bottom:10%;
+    height:40px;
+    text-align:center;
+    left:10%;
+    color:blue;
+    font-size:18px;
+    display: none
+}
+/*文字是否居中对齐*/
+.processdom>span{
+  /*  vertical-align:middle;*/
+}
+
+.highlightColor{
+    color:yellow;
+}
+/*当前页的数字样式*/
+.processdom .curpagedom{
+    color:#ffffff;
+    font-size:24px;
+}
+
+/*分割斜线的样式**/
+.processdom>span:nth-child(2){
+    color:#fff;
+}
+/*总页的数字样式*/
+.processdom .totalpagedom{
+    color:yellow;
+    font-size:18px;
+}
+@charset "utf-8";
+/* CSS Document */
+.pie{
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    bottom:0;
+    margin:auto;
+}
+.bgimage{
+    width:100%;
+    height:100%;
+    background:url(imgs/cloudbg.jpg) no-repeat ;
+    background-size: 78%;
+    background-position: center center;
+}
+
+
+@charset "utf-8";
+/* CSS Document */
+.tip_con_rj{
+    background:url(imgs/icon_tcbq.png) no-repeat;
+    background-size: 100% 100%;
+         min-width: 100px;
+    height: 44px;
+    line-height: 40px;
+    text-align: center;
+}
+@charset "utf-8";
+/* CSS Document */
+.qchy .prefix{
+    font-size:16px;
+    color:#fff;
+}
+.qchy .unit{
+    font-size:12px;
+    color:#FFF64F;
+}
+.qchy{
+    overflow: visible !important;
+}
+
+.qchy::before{
+    content: "";
+    background-image: url(imgs/num-left.png);
+    width: 50px;
+    height: 155px;
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.qchy::after{
+    content: "";
+    background-image: url(imgs/num-right.png);
+    width: 55px;
+    height: 155px;
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+/*** 数字 ***/
+.qchy {
+  background: transparent!important;
+}
+.qchy .odometer.odometer-theme-digital {
+  background: transparent!important;
+}
+/*** 文字容器***/
+.qchy .odometer.odometer-theme-digital .odometer-digit {
+  width: 43px;
+  height: 68px;
+  font-size: 60px;
+  line-height: 70px;
+  color: #00d2ff;
+  background: transparent;
+}
+.qchy .odometer.odometer-theme-digital .odometer-digit:before,
+.qchy .odometer.odometer-theme-digital .odometer-digit:after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  width: 100%;
+  height: 33px;
+  /* box-shadow: 1px 1px 3px rgba(6, 0, 1, 0.59); */
+  background-position: -10px -10px;
+  /* background: linear-gradient(180deg, #1870c6 50%,#1870c6 200%); */
+}
+.qchy .odometer.odometer-theme-digital .odometer-digit + .odometer-digit {
+  margin-left: 10px;
+}
+.qchy .odometer.odometer-theme-digital .odometer-digit:before {
+  top: 0;
+  /* background: linear-gradient(180deg, #1870c6 50%, #1870c6 200%); */
+  background-image: url(imgs/num-down.png);
+}
+.qchy .odometer.odometer-theme-digital .odometer-digit:after {
+  bottom: 0;
+  /* background:linear-gradient(180deg, #2058a1 50%, #3790eb 200%); */
+  background-image: url(imgs/num-up.png);
+}
+/*** 文字样式 ***/
+.qchy .odometer.odometer-theme-digital .odometer-digit .odometer-digit-spacer {
+  width: 100%;
+  text-align: center;
+}
+/*** 数值样式 ***/
+.qchy .odometer.odometer-theme-digital .odometer-digit .odometer-value {
+  width: 100%;
+  text-align: center;
+}
+table {
+                /*设置相邻单元格的边框间的距离*/
+                border-spacing: 0;
+                /*表格设置合并边框模型*/
+                border-collapse: collapse;
+                text-align: center;
+            }
+            /*关键设置 tbody出现滚动条*/
+            table tbody {
+                position:absolute;
+                height: 92%;
+                overflow-y: scroll;
+            }
+
+            table thead,
+            tbody tr {
+                display: table;
+                width: 100%;
+                table-layout: fixed;
+            }
+            /*关键设置：滚动条默认宽度是16px 将thead的宽度减16px*/
+            table thead {
+                width: calc( 100% - 1em)
+            }
+
+
+            table thead th {
+                background: #ccc;
+            }
+            
+@keyframes arrow-up {
+  0% {
+    top: 25px;
+  }
+  50% {
+    top: 0;
+  }
+  100% {
+    top: -25px;
+  }
+}
+@-webkit-keyframes arrow-up {
+  0% {
+    top: 25px;
+  }
+  50% {
+    top: 0;
+  }
+  100% {
+    top: -25px;
+  }
+}
+@keyframes arrow-down {
+  0% {
+    top: -25px;
+  }
+  50% {
+    top: 0;
+  }
+  100% {
+    top: 25px;
+  }
+}
+@-webkit-keyframes arrow-down {
+  0% {
+    top: -25px;
+  }
+  50% {
+    top: 0;
+  }
+  100% {
+    top: 25px;
+  }
+}
+
+.copyright{
+  position:absolute;
+  width:100%;
+  bottom:0;
+  text-align:center;
+  color:#FFFFFF;
+}
+
+.beian{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.beian_text{
+  flex-direction: column;
+  align-items: center;
+}
+.time{
+  font-size: 30px;
+  color: #00d2ff;
+}
+
+</style>
+ </head> 
+ <body>
+  <div class="editorscroll "> 
+   <div id="editor" style="background-repeat: no-repeat; background-color: rgb(15, 50, 152); min-width: auto; width: 1920px; min-height: auto; height: 1080px;"> 
+    <div class="widgetobj_container coolscreen-container coolscreen-container-4" id="HHH2" wid="d95d36a29cb44a4b9c1aa01f47e2581328" style="left: 3px; top: 122px; width: 444px; height: 431px; cid="d95d36a29cb44a4b9c1aa01f47e2581328"> 
+      <div class="coolscreen-content">
+        <div class="coolscreen-container-title" id="analys_title">周累计清理次数</div> 
+        <div id="chart1" style="top:100px;"></div>  
+       <div class="coolscreen-container-body"> 
+        <div style="left: 8px; top: 4px; width: 414px; height: 366px; user-select: none;" id="HHH7" wid="1d86daa0282248de83a37893c0df3d0a9" class="widgetobj_container " cid="1d86daa0282248de83a37893c0df3d0a9" _echarts_instance_="ec_1604593260764"><div style="position: relative; overflow: hidden; width: 414px; height: 366px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;"><canvas style="position: absolute; left: 0px; top: 0px; width: 414px; height: 366px; user-select: none; padding: 0px; margin: 0px; border-width: 0px;" data-zr-dom-id="zr_0" width="621" height="549"></canvas></div><div></div></div> 
+       </div> 
+      </div>   
+     </div>
+
+    <div class="widgetobj_container coolscreen-container coolscreen-container-4" id="HHH3" wid="d95d36a29cb44a4b9c1aa01f47e2581395" style="left: 1px; top: 571px; width: 446px; height: 467px; cid="d95d36a29cb44a4b9c1aa01f47e2581395"> 
+      <div class="coolscreen-content"> 
+        <div class="coolscreen-container-title" id="contain_title">实时容量</div> 
+        <div id="contain" style="width:500; height:500px;"></div><!-- 多环对比图 -->
+      </div>   
+     </div>
+    <div class="widgetobj_container coolscreen-container coolscreen-container-4" id="HHH4" wid="d95d36a29cb44a4b9c1aa01f47e2581372" style="left: 1472px; top: 122px; width: 443px; height: 420px; cid="d95d36a29cb44a4b9c1aa01f47e2581372"> 
+      <div class="coolscreen-content"> 
+       <div class="coolscreen-container-title" id="history_title">历史识别记录</div> 
+       <div class="coolscreen-container-body"> 
+        <div class="widgetobj_container wrap" id="HHH41" wid="917cd9b6665841e6abe3dc43895e491c70" style="left: 11px; top: 8px; width: 425px; height: 342px; cid="917cd9b6665841e6abe3dc43895e491c70"> 
+         <section class="sectionDiv"> 
+          <header class="headerDiv"> 
+           <ul class="titleUl"> 
+           <li class="title1Li" style="padding-left: 0px; text-align: center; width: 17%;">时间</li>
+           <li class="title1Li" style="width: 30%;">图片识别结果</li>
+           <li class="title1Li" style="width: 33%;">语音识别结果</li>
+           <li class="title2Li" style="width: 20%;">垃圾分类结果</li>
+          </ul> 
+          </header> 
+          <div class="bodyDiv"> 
+            <table id="history_table" border='2' style="color: #ffffff;" align='center' width=100% class="history_scroll">
+          </table>
+          </div> 
+         </section>  
+        </div> 
+       </div> 
+      </div>   
+     </div>
+
+	<div class="widgetobj_container coolscreen-container coolscreen-container-4" id="HHH5" wid="d95d36a29cb44a4b9c1aa01f47e2581312" style="left: 1472px; top: 570px; width: 446px; height: 470px; cid="d95d36a29cb44a4b9c1aa01f47e2581312"> 
+     <div class="coolscreen-content"> 
+      <div class="coolscreen-container-title">功能特点</div> 
+      <div class="coolscreen-container-body"> 
+       <div id="HHH65" wid="3370627959554784bf205c139c12fbb688" class="widgetobj_container " style="left: 35px; top: 26px; width: 389px; height: 369px; cid="3370627959554784bf205c139c12fbb688"> 
+        <div class="cloud_basedom"> 
+         <div class="cloudesvg"></div> 
+         <div class="cytzj"> 
+            <div>
+				<div style="position: relative; overflow: hidden; width: 100%; height: 100%; background-color: transparent;" id="Esen">
+				<a style="position: absolute; top: 105.709px; left: 99.0645px; font-family: 微软雅黑; font-style: normal; font-weight: normal; text-decoration: none; padding: 3px; color: rgb(255, 255, 255); opacity: 0.240262; z-index: 0;">垃圾分类</a>
+				<a style="position: absolute; top: 187.165px; left: 112.125px; font-family: 微软雅黑; font-style: normal; font-weight: normal; text-decoration: none; padding: 3px; color: rgb(255, 255, 255); opacity: 0.501111; z-index: 1; letter-spacing: 0px;">智能联网</a>
+				<a style="position: absolute; top: 157.562px; left: 4.79414px; font-family: 微软雅黑; font-style: normal; font-weight: normal; text-decoration: none; padding: 3px; color: rgb(255, 255, 255); opacity: 0.664858; z-index: 2; letter-spacing: 0px;">多重识别</a>
+				<a style="position: absolute; top: 44.8758px; left: -7.63842px; font-family: 微软雅黑; font-style: normal; font-weight: normal; text-decoration: none; padding: 3px; color: rgb(255, 255, 255); opacity: 0.493043; z-index: 3;">实时监控容量</a>
+				<a style="position: absolute; top: 3.41022px; left: 126.013px; font-family: 微软雅黑; font-style: normal; font-weight: normal; text-decoration: none; padding: 3px; color: rgb(255, 255, 255); opacity: 0.414195; z-index: 4;">短信反馈信息</a>
+				<a style="position: absolute; top: 73.8962px; left: 201.529px; font-family: 微软雅黑; font-style: normal; font-weight: normal; text-decoration: none; padding: 3px; color: rgb(255, 255, 255); opacity: 0.645954; z-index: 5; letter-spacing: 0px;">消毒灭菌</a>
+				<a style="position: absolute; top: 145.201px; left: 148.856px; font-family: 微软雅黑; font-style: normal; font-weight: normal; text-decoration: none; padding: 3px; color: rgb(255, 255, 255); opacity: 1.21404; z-index: 6; letter-spacing: 0px;">“一对一”专属服务</a>
+				<a style="position: absolute; top: 91.3776px; left: 53.6123px; font-family: 微软雅黑; font-style: normal; font-weight: normal; text-decoration: none; padding: 3px; color: rgb(255, 255, 255); opacity: 1.40522; z-index: 7; letter-spacing: 0px;">自助终端</a>
+				<a style="position: absolute; top: 4.41992px; left: 90.998px; font-family: 微软雅黑; font-style: normal; font-weight: normal; text-decoration: none; padding: 3px; color: rgb(255, 255, 255); opacity: 1.07636; z-index: 8;">提供垃圾桶位置</a>
+				</div>
+			</div> 
+         </div> 
+         <div class="processdom"> 
+          <span class="curpagedom"></span>
+          <span>/</span>
+          <span class="totalpagedom"></span> 
+         </div> 
+        </div>  
+       </div> 
+      </div> 
+     </div>   
+    </div>
+	
+    <div class="widgetobj_container coolscreen-container" id="HHH6" wid="d95d36a29cb44a4b9c1aa01f47e2581315" style=";left:465px;top:798px;width:994px;height:247px"> 
+     <div class="coolscreen-content"> 
+      <div class="coolscreen-container-body"> 
+       <div class="defelement" droppable="true" wid="elem" style="background-repeat: no-repeat; border: none; left: 0px; top: 29px; width: 221px; height: 202px; background-color: transparent;"> 
+        
+        <div class="widgetobj_container qchy" style="text-align: center; left: 28px; top: 43px; width: 200px; height: 86px; background-repeat: repeat;" id="HHH18" wid="9d94ebc997f0485eaa7dc728f2a92e4669" cid="9d94ebc997f0485eaa7dc728f2a92e4669"> 
+          <div style="display:inline-block;vertical-align:middle;" class="odometer odometer-theme-digital">
+            <div class="time">
+              <br>
+              <div class="time-text" id="weather"></div>
+            </div>
+        </div> 
+          <!--只用来垂直居中--> 
+          <span class="unit"> </span> 
+         </div>   
+       </div>  
+
+       <div class="defelement" droppable="true" wid="elem" style="background-repeat: no-repeat; border: none; width: 438px; height: 202px; background-color: transparent; top: 17px; left: 282px;"> 
+        <div class="widgetobj_container qchy" style="text-align: center; left: 28px; top: 43px; width: 376px; height: 86px; background-repeat: repeat;" id="HHH18" wid="9d94ebc997f0485eaa7dc728f2a92e4669" cid="9d94ebc997f0485eaa7dc728f2a92e4669"> 
+         <div style="display:inline-block;vertical-align:middle;" class="odometer odometer-theme-digital">
+          <div class="odometer-inside">
+            <span class="odometer-digit">
+            <span class="odometer-digit-spacer" id="address1">-</span>
+          </span>
+          <span class="odometer-digit">
+            <span class="odometer-digit-spacer" id="address2">-</span>
+            </span>
+            <span class="odometer-digit">
+              <span class="odometer-digit-spacer" id="address3">-</span>
+            </span>
+          </div>
+        </div> 
+         <!--只用来垂直居中--> 
+         <span class="unit"> </span> 
+        </div> 
+        <div style="font-size: 0px; left: 132px; top: 127px; width: 164px; height: 69px; id="HHH19" wid="CHtmlWidgetText81" class="widgetobj_container " cid="CHtmlWidgetText81"> 
+        </div> 
+       </div>
+
+       <div class="defelement" droppable="true" wid="elem" style="border: none; width: 221px; height: 202px; background-color: transparent; top: 29px; left: 729px;"> 
+        <div class="widgetobj_container qchy" style="text-align: center; left: 28px; top: 43px; width: 200px; height: 86px; background-repeat: repeat;" id="HHH18" wid="9d94ebc997f0485eaa7dc728f2a92e4669" cid="9d94ebc997f0485eaa7dc728f2a92e4669"> 
+          <div style="display:inline-block;vertical-align:middle;" class="time">
+            <div class="time-text" id="date"></div>
+            <br>
+            <div class="time-text" id="week"></div>
+            <br>
+            <div class="time-text" id="time"></div>
+          </div> 
+          <!--只用来垂直居中--> 
+          <span class="unit"> </span> 
+         </div> 
+      </div>
+
+      </div> 
+     </div>   
+    </div> 
+    <div style="font-size: 0px; left: 2px; top: 20px; width: 1920px; height: 67px; background-repeat: no-repeat; background-position: center 30px;" id="HHH55" wid="CHtmlWidgetText32" class="widgetobj_container " cid="CHtmlWidgetText32"> 
+      <img style="width: 0px; height: 100%; display: inline-block; vertical-align: middle;"> 
+      <div class="textcontent" style="text-align: center; vertical-align: middle;">
+        <span style="color:#FFFFFF;font-size:36px;">智慧垃圾管控平台</span>
+      </div>  
+     </div>
+ 
+    <div id="HHH45" wid="540d454c4f8f4e0d8d832e46a5ba0d7b16" class="widgetobj_container " style=";left:500px;top:100px;width:913px;height:690px"> 
+     <div class="lineschina" id="map"></div>  
+    </div> 
+    <div style="font-size:0;;left:397px;top:41px;width:290px;height:66px" id="HHH79" wid="2f0076f5a8d3464ca625e090f16863f40" class="widgetobj_container "> 
+     <img style="width:0px;height:100%;display:inline-block;" /> 
+     <div class="textcontent"></div>  
+    </div> 
+    <div style="font-size:0;;left:1249px;top:42px;width:290px;height:66px" id="HHH81" wid="2f0076f5a8d3464ca625e090f16863f466" class="widgetobj_container "> 
+     <img style="width:0px;height:100%;display:inline-block;" /> 
+     <div class="textcontent"></div>  
+    </div> 
+   </div>  
+  </div>
+
+  <div class="copyright">
+    <div><span>Copyright © 2020 HIT-Sorting Hat All Rights Reserved</span></div>
+    <div class="beian">
+      <div><img src="imgs/beian.png"></img></div>
+      <div class="beian_text">
+        <span><a rel="nofollow" target="_blank" style="color: #FFFFFF;" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=62062302620141">陇公网安备62062302620141号</a></span>
+		    <span><a rel="nofollow" target="_blank" style="color: #FFFFFF;" href="https://beian.miit.gov.cn">陇ICP备20001266号-1</a></span>
+      </div>
+    </div>
+  </div>
+
+ </body>
+ <head>
+  <script src="js/minishowmgr.js"></script>
+  <script src="js/coolrptshow.js"></script>
+  <script id="vardefine">
+    var $relpath ="/abicool/";
+    var g_rptid ="EANA$2$4$1$ee9eaf6b82b44b9aa281edbbbf792b64$a1884a5ca5e34e4e9cc2816ee93ab4c0.coolrpt";
+    var g_hasmacroinhtml ="false";
+    var g_scale ="auto";
+    var g_eventjs ="%7B%22onload%22%3A%22%20//%u5355%u4E2A%u7EC4%u4EF6%5Cn/*%20calc_Special_Widget%28new%20EUI.Map%28%5C%22calc_widget_id%3DHHH2%3B@y%3D%5C%22+%272017%27%29%2Cnull%2C2000%29%3B*/%5Cn//%u591A%u4E2A%u7EC4%u4EF6%u5982%u4F55%u5B9E%u73B0%u540C%u65F6%u5237%u65B0%5Cn/*calc_Special_Widget%28new%20EUI.Map%28%5C%22calc_widget_id%3DGRID3%2CGRID4%3B@y%3D%5C%22+%272017%27%29%2Cnull%2C2000%29%3B*/%5Cn//%u8BA1%u7B97%u6574%u4E2A%u9177%u5C4F%5Cn%20/*%20calc_Special_Widget%28%29%3B*/%5Cncalc_Special_Widget%28%5C%22calc_widget_id%3DHHH66%3B@dq%3D%27%u5168%u56FD%27%5C%22%29%3B%5Cn%24%28g_coolpage.getWidgetById%28%5C%22HHH69%5C%22%29.basedom%29.on%28%5C%22click%5C%22%2Cfunction%28%29%7B%5Cn%5Ctcalc_Special_Widget%28%5C%22calc_widget_id%3DHHH7%2CHHH18%2CHHH11%2CHHH66%2CHHH45%2CHHH8%2CHHH10%3B@dq%3D%27%u5168%u56FD%27%5C%22%29%3B%5Cn%7D%29%3B%22%7D";
+    var g_cwids ="";
+    var g_isResultNew ="true";
+    var g_srcrptid ="null";
+    var g_threadid ="EANA$2$4$2$ee9eaf6b82b44b9aa281edbbbf792b64$1460948.coolrpt";
+    var g_watermarkprpjson ="%7B%22watermark%22%3A%22%22%2C%22watermarkwidth%22%3A%22%22%2C%22watermarkheight%22%3A%22%22%7D";
+    var g_treeinfo ="%5B%7B%22iscallback%22%3Afalse%2C%22HHH2%22%3A%5B%22HHH7%22%5D%7D%2C%7B%22iscallback%22%3Afalse%2C%22HHH3%22%3A%5B%22HHH8%22%5D%7D%2C%7B%22iscallback%22%3Afalse%2C%22HHH4%22%3A%5B%22HHH41%22%5D%7D%2C%7B%22iscallback%22%3Afalse%2C%22HHH5%22%3A%5B%22HHH65%22%5D%7D%2C%7B%22iscallback%22%3Afalse%2C%22HHH6%22%3A%5B%7B%22iscallback%22%3Afalse%2C%22div%22%3A%5B%22HHH10%22%2C%22HHH12%22%5D%7D%2C%7B%22iscallback%22%3Afalse%2C%22div%22%3A%5B%22HHH14%22%2C%22HHH11%22%5D%7D%2C%7B%22iscallback%22%3Afalse%2C%22div%22%3A%5B%22HHH18%22%2C%22HHH19%22%5D%7D%5D%7D%2C%22HHH55%22%2C%22HHH66%22%2C%22div%22%2C%22HHH69%22%2C%22HHH45%22%2C%22HHH79%22%2C%22HHH81%22%5D";
+    var g_hascoolvoice ="true";
+    var g_resid ="EANA$2$4$2$ee9eaf6b82b44b9aa281edbbbf792b64$53f315e0e038448197de355a536a71f1.coolrpt";
+    var g_htmlmacro_hasrefresult ="false";
+  </script>
+  <script id="main.js">
+    /*****************************************显示时间************************************************************/
+    function getTime(){
+      var show_day=new Array('星期一','星期二','星期三','星期四','星期五','星期六','星期日'); 
+      var time=new Date(); 
+      var year=time.getFullYear(); 
+      var month=time.getMonth() + 1;
+      var date=time.getDate();  
+      var day=time.getDay(); 
+      if(day==0)day=7;
+      var hour=time.getHours(); 
+      var minutes=time.getMinutes(); 
+      var second=time.getSeconds(); 
+      if(hour<10){hour = '0' + hour;}
+      if(minutes<10){minutes = '0' + minutes;}
+      if(second<10){second = '0' + second;}
+      document.getElementById("date").innerHTML = year+'/'+month+'/'+date;
+      document.getElementById("week").innerHTML = show_day[day-1];
+      document.getElementById("time").innerHTML = hour+':'+minutes+':'+second;
+    }
+    /*****************************************输出表格************************************************************/
+    function view_histroy(){
+      const httpRequest = new XMLHttpRequest();
+      const url = 'https://iscs.xyz/request/read_history.php';
+      httpRequest.open("GET", url, 'true');
+      httpRequest.send();//第三步：发送请求  将请求参数写在URL中
+      /**
+      * 获取数据后的处理程序
+      */
+      httpRequest.onreadystatechange = function () {
+      if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+          var json = httpRequest.responseText;//获取到json字符串，还需解析
+          var data = JSON.parse(json);
+          var table = document.getElementById("history_table");
+          for(var i=0;i<data.length;i++){
+              var row=table.insertRow(table.rows.length);
+              var c1=row.insertCell(0);
+              c1.innerHTML=data[i].time;
+              var c2=row.insertCell(1);
+              c2.innerHTML=data[i].image_result;
+              var c3=row.insertCell(2);
+              c3.innerHTML=data[i].voice_result;
+              var c4=row.insertCell(3);
+              c4.innerHTML=data[i].find_result;
+          }
+        }
+      }
+    }
+    /*****************************************多环对比图************************************************************/ 
+    function view_contain(){
+      const httpRequest = new XMLHttpRequest();
+      const url = 'https://iscs.xyz/request/read_contain.php';
+      httpRequest.open("GET", url, 'true');
+      httpRequest.send();//第三步：发送请求  将请求参数写在URL中
+      /**
+      * 获取数据后的处理程序
+      */
+      httpRequest.onreadystatechange = function () {
+      if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+          var json = httpRequest.responseText;//获取到json字符串，还需解析
+          var data = JSON.parse(json);
+          var recycle = (100*data[0].recycle).toFixed(2);
+          var hazardous = (100*data[0].hazardous).toFixed(2);
+          var dry = (100*data[0].dry).toFixed(2);
+          var wet = (100*data[0].wet).toFixed(2);
+
+          var total = 100;
+          var myChart = echarts.init(document.getElementById('contain'));
+          placeHolderStyle = {
+              normal: {
+                  label: {
+                      show: false,
+                  },
+                  labelLine: {
+                      show: false,
+                  }
+              }
+        };
+        option = {
+          title : {
+              text: 'ISCS',//主标题
+              textStyle: {//主标题样式
+              color: '#fff',
+              fontWeight: 'bold',
+              fontSize: 20
+              },
+              left:'center',
+              top: 'middle'
+          },
+          tooltip: {
+          show: true,
+              trigger: 'item',//提示框触发类型，item数据项图形触发，主要应用于无类目轴的图表（散点图、饼形图等）
+              formatter: function(params, ticket, callback) {//第一个参数数据集、第二个参数是异步回调标志、第三个参数是异步回调
+                  return params.seriesName + ": " + params.value + "%";//系列名称：数据值
+              }
+          },
+          color:['#7ef024','#3082f8','#f84a30','#f3f830'],//调色盘颜色列表，默认情况下图例和饼形环图颜色使用
+          legend: {
+              top: "44px",
+              left: "50%",
+              itemHeight: 20,//图例的高度 
+
+      itemGap:10,//图例之间的间距        
+
+      data: ['可回收垃圾', '厨余垃圾', '有害垃圾', '其他垃圾'],//图例的数据数组
+              textStyle: {
+                  color: '#fff'
+              },
+              selectedMode: true,//图例选择模式
+              orient: "vertical"//图例布局方式
+          },
+          series: [
+          {
+              name: '可回收垃圾',
+              type: 'pie',
+              clockWise: false, //顺时加载
+              hoverAnimation: false, //鼠标移入变大
+              radius: [180, 200],
+              itemStyle: placeHolderStyle,
+              label: {
+                  normal: {
+                      show: false,
+                  }
+              },
+              data: [{
+              value: recycle,
+              itemStyle: {
+                  normal: {
+                      color: '#7ef024'
+                  }
+              }
+              }, 
+              {
+              value: total-recycle,
+              itemStyle: {
+                  normal: {
+                      color: 'transparent'
+                  }
+              }
+          }]
+          }, 
+          {
+              name: '厨余垃圾',
+              type: 'pie',
+              clockWise: false, //顺时加载
+              hoverAnimation: false, //鼠标移入变大
+              radius: [150, 170],
+              itemStyle: placeHolderStyle,
+              data: [{
+              value: hazardous,
+              itemStyle: {
+                  normal: {
+                      color: '#3082f8'
+                  }
+              }
+              }, 
+              {
+              value: total-hazardous,
+              itemStyle: {
+                  normal: {
+                      color: 'transparent'
+                  }
+              }
+          }]
+          }, 
+          {
+              name: '有害垃圾',
+              type: 'pie',
+              clockWise: false, //顺时加载
+              hoverAnimation: false, //鼠标移入变大
+              radius: [120, 140],
+              itemStyle: placeHolderStyle,
+              data: [{
+              value: dry,
+              itemStyle: {
+                  normal: {
+                      color: '#f84a30'
+                  }
+              }
+              }, 
+              {
+              value: total-dry,
+              itemStyle: {
+                  normal: {
+                      color: 'transparent'
+                  }
+              }
+          }]
+          },
+          {
+              name: '其他垃圾',
+              type: 'pie',
+              clockWise: false, //顺时加载
+              hoverAnimation: false, //鼠标移入变大
+              radius: [90, 110],
+              itemStyle: placeHolderStyle,
+              data: [{
+              value: wet,
+              itemStyle: {
+                  normal: {
+                      color: '#f3f830'
+                  }
+              }
+              }, 
+              {
+              value: total-wet,
+              itemStyle: {
+                  normal: {
+                      color: 'transparent'
+                  }
+              }
+            }]
+            }, 
+          ]
+        };
+        myChart.setOption(option);
+        }
+      }
+      
+  }
+    /*****************************************折线动态图************************************************************/
+    function showAnalys(){
+        $(document).ready(function(){
+            $.jqplot.config.enablePlugins = true;
+            var s1 = [2, 6, 7, 10];
+            var ticks = ['可回收物', '有害垃圾', '厨余垃圾', '其他垃圾'];
+            
+            plot1 = $.jqplot('chart1', [s1], {
+                animate: !$.jqplot.use_excanvas,
+                seriesDefaults:{
+                    renderer:$.jqplot.BarRenderer,
+                    pointLabels: { show: true },
+                },
+                grid:{
+                    drawGridLines: false, 
+                    background:" #013b92 "
+                },
+                
+                axes: {
+                    xaxis: {
+                        renderer: $.jqplot.CategoryAxisRenderer,
+                        ticks: ticks,
+                    }
+                },
+
+                highlighter: { show: false },
+                axesDefaults: {
+                  tickOptions: {
+                    fontSize: '23px',
+                    textColor: '#ffffff',
+                    showGridline: false,
+                  },
+                }
+                
+            });
+        
+            $('#chart1').bind('jqplotDataClick', 
+                function (ev, seriesIndex, pointIndex, data) {
+                    $('#info1').html('series: '+seriesIndex+', point: '+pointIndex+', data: '+data);
+                }
+            );
+        });
+    }
+    /*****************************************获取当前位置天气************************************************************/
+    var current_weather = document.getElementById("positon");
+    function showWeather(){
+        var options={
+          enableHighAccuracy:true, 
+          maximumAge:1000
+        }
+        if (navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(onSuccess,onError,options);
+        }
+        else{current_weather.innerHTML = "当前浏览器不支持定位！";}
+    }
+    
+    //获取成功
+    function onSuccess(position){
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+
+        $.ajax({
+            url: 'https://api.map.baidu.com/reverse_geocoding/v3/?ak=PeMaTemyALCp4nbblIV8xltPOiUkpuPY&output=json&coordtype=wgs84ll&location='+latitude+','+longitude,
+            type: 'GET',
+            async:true,//设置同步。ajax默认异步
+            dataType: 'jsonp',
+            jsonp:'callback',//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
+            jsonpCallback:"callback",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+            timeout: 5000,
+            contentType: 'application/json; charset=utf-8',
+            success: function (result){
+                // var address = result.result.formatted_address
+                $.ajax({
+                    url: 'https://restapi.amap.com/v3/weather/weatherInfo?city='+result.result.addressComponent.adcode+'&key=dda70f4eea1a5d6c49817092b90ae0dc',
+                    type: 'GET',
+                    async:true,//设置同步。ajax默认异步
+                    dataType: 'jsonp',
+                    jsonp:'callback',//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
+                    jsonpCallback:"callback",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+                    timeout: 5000,
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (res){
+                        var data = res.lives[0];//
+                        document.getElementById("weather").innerHTML =data.weather+' '+data.temperature+"℃";
+
+                        document.getElementById("address1").innerHTML =data.city.substring(0,1);
+                        document.getElementById("address2").innerHTML =data.city.substring(1,2);
+                        document.getElementById("address3").innerHTML =data.city.substring(2,3);
+                        
+                    }
+                });
+            }
+        });
+    }
+
+    //获取失败
+    function onError(error){
+        current_weather.innerHTML = "暂时无法定位，请检查相关权限后刷新重试！";
+        alert("暂时无法定位，请检查相关权限后刷新重试！");
+    }
+
+    /*****************************************地图显示************************************************************/
+    function addClickHandler(map,content,marker){
+                marker.addEventListener("click",function(e)
+                {
+                    openInfo(map,content,e);
+                })
+	        }
+
+    function openInfo(map,content,e){
+          var p = e.target;
+          var opts = {
+              width : 50,     // 信息窗口宽度
+              height: 50,     // 信息窗口高度
+              title : "【选定位置】" , // 信息窗口标题
+              enableMessage:true//设置允许信息窗发送短息
+      };
+
+      var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+      var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象 
+      map.openInfoWindow(infoWindow,point); //开启信息窗口
+
+      //更改标题
+      showAnalys();
+      document.getElementById("contain_title").innerHTML = content + "——实时容量";view_contain();
+      document.getElementById("history_title").innerHTML = "<a href='https://iscs.xyz/history.php' target='_blank'>"+content + "——历史记录</a>";view_histroy();
+    }   
+
+    function showMap(){
+        //百度地图API功能
+        var map = new BMap.Map("map");
+        var point = new BMap.Point(126.639819,45.751237);
+        map.centerAndZoom(point, 17);
+        map.setMapStyleV2({     
+            styleId: '43d93818a8e47107251da012ce839311'
+        });
+        //map.enableScrollWheelZoom(true);     // 开启鼠标滚轮缩放
+
+        //添加多个点
+        var data_info = [
+            [126.639811,45.74853,"新技术楼"],
+            [126.63883,45.751219,"图书馆"],
+            [126.636097,45.750634,"格物楼"],
+            [126.644343,45.748407,"哈工大校医院"],
+            [126.639259,45.753552,"主楼"],
+            [126.633815,45.749866,"理学楼"],
+            [126.640984,45.749005,"诚意楼"],
+            [126.635989,45.749407,"幼儿园"],
+            [126.638639,45.749892,"学苑楼"],
+            [126.637341,45.749433,"正心楼"],
+        ];
+
+
+
+        for(var i=0;i<data_info.length;i++){
+            var marker = new BMap.Marker(new BMap.Point(data_info[i][0],data_info[i][1]));  // 创建标注
+            var content = data_info[i][2];
+            map.addOverlay(marker);               // 将标注添加到地图中
+            addClickHandler(map,content,marker);
+            //marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+        }
+
+    }
+    //异步加载，不妨碍其他js
+    function loadScript(){
+        var script = document.createElement("script"); 
+        script.src = "https://api.map.baidu.com/api?v=1.0&type=webgl&ak=IodPyxQlYROsxomC7Znnbh6uwdcegdFg&callback=initialize";
+        document.body.appendChild(script); 
+    }
+        
+    window.onload = loadScript;
+
+    /*****************************************主函数************************************************************/ 
+    showWeather();
+    setInterval("getTime();",1000);
+    showMap();
+
+
+  </script>
+  <script src="js/initmain.js"></script>
+ </head>
+ <!-- <body></body> -->
+</html>
